@@ -8,12 +8,12 @@
 import Foundation
 
 
-public protocol AccountRepositories: Sendable {
+ protocol AccountRepository: Sendable {
     func fetchAccounts() async throws -> [Account]
     
 }
 
 
-public protocol TransactionRepositories: Sendable {
+ protocol TransactionRepository: Sendable {
     func fetchTransactions(forceRefresh : Bool) async throws -> [Transaction]
 }

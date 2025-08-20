@@ -1,0 +1,7 @@
+[
+  { "id": "t1", "date": "2025-08-18T12:00:00Z", "amount": -28.45, "category": "Dining",   "merchant": "Chipotle" },
+  { "id": "t2", "date": "2025-08-17T09:30:00Z", "amount": -4.75,  "category": "Coffee",   "merchant": "Starbucks" },
+  { "id": "t3", "date": "2025-08-16T18:15:00Z", "amount": -62.10, "category": "Groceries","merchant": "Trader Joe's" },
+  { "id": "t4", "date": "2025-08-15T08:00:00Z", "amount": 1200.0, "category": "Income",   "merchant": "Payroll" }
+]
+

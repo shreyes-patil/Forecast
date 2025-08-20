@@ -1,0 +1,5 @@
+[
+  { "id": "acc_checking", "name": "Checking", "currentBalance": 2450.25 },
+  { "id": "acc_savings",  "name": "Savings",  "currentBalance": 5200.00 }
+]
+

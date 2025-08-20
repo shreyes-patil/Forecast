@@ -8,12 +8,9 @@
 import Foundation
 
 
-public struct CashFlowPoint {
-    public let date: Date
-    public let balance: Decimal
+struct CashFlowPoint {
+    let date: Date
+    let balance: Decimal
     
-    public init(date: Date, balance: Decimal) {
-        self.date = date
-        self.balance = balance
-    }
+   
 }

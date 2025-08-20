@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol BankAdapter : Sendable {
+ protocol BankAdapter : Sendable {
     
     func connect () async throws
     func accounts() async throws -> [Account]
@@ -15,6 +15,6 @@ public protocol BankAdapter : Sendable {
 }
 
 
-public protocol ChatAdapter : Sendable {
+ protocol ChatAdapter : Sendable {
     func answer(question : String, context : [Transaction]) async throws -> String
 }
