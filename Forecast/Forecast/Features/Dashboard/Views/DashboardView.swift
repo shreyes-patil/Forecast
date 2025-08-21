@@ -24,7 +24,6 @@ struct DashboardView: View {
         }
         
         var body: some View {
-            NavigationView {
                 Group {
                     if vm.isLoading {
                         ProgressView(LocalizedStringKey("loading.generic"))
@@ -54,8 +53,8 @@ struct DashboardView: View {
                         }
                         .refreshable { vm.load(forceRefresh: true) }
                     }
-                }
-                .navigationTitle(LocalizedStringKey("dashboard.title"))
+                
+                
             }
             .onAppear { vm.load() }
         }
