@@ -24,6 +24,9 @@ final class DashboardViewModel : ObservableObject {
     @Published var monthSpending : Decimal = 0
     @Published var topCategories : [(category: String, total: Decimal)] = []
     
+    @Published var forecastPoints: [CashFlowPoint] = []
+    private let forecastUseCase = ForecastUseCase()
+    
     init(accountRepo : AccountRepository, transactionRepo : TransactionRepository) {
         self.accountRepo = accountRepo
         self.transactionRepo = transactionRepo
@@ -52,12 +55,16 @@ final class DashboardViewModel : ObservableObject {
                 self.monthSpending = abs(spendRaw)
                 
                 self.topCategories = self.categoryTotals(thisMonth)
+                self.forecastPoints = forecastUseCase.forecast(transactions: loadedTransactions, startingBalance: self.currentBalance, days: 30)
+
                 self.isLoading = false
             } catch {
                 self.errorMessage = (error as NSError).localizedDescription
                 self.isLoading = false
             }
         }
+            
+        
     }
     
     private func filterThisMonth(_ txs: [Transaction]) -> [Transaction] {

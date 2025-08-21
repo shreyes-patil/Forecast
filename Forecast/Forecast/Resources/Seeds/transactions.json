@@ -1,7 +1,26 @@
 [
-  { "id": "t1", "date": "2025-08-18T12:00:00Z", "amount": -28.45, "category": "Dining",   "merchant": "Chipotle" },
-  { "id": "t2", "date": "2025-08-17T09:30:00Z", "amount": -4.75,  "category": "Coffee",   "merchant": "Starbucks" },
-  { "id": "t3", "date": "2025-08-16T18:15:00Z", "amount": -62.10, "category": "Groceries","merchant": "Trader Joe's" },
-  { "id": "t4", "date": "2025-08-15T08:00:00Z", "amount": 1200.0, "category": "Income",   "merchant": "Payroll" }
-]
+  { "id": "t001", "date": "2025-08-01T09:00:00Z", "amount": 2500.00, "category": "Income",     "merchant": "Payroll" },
+  { "id": "t002", "date": "2025-08-01T12:00:00Z", "amount": -1800.00,"category": "Rent",       "merchant": "Landlord" },
+  { "id": "t003", "date": "2025-08-01T18:00:00Z", "amount": -9.99,   "category": "Subscriptions","merchant": "Apple Music" },
 
+  { "id": "t004", "date": "2025-08-03T16:30:00Z", "amount": -84.20,  "category": "Groceries",  "merchant": "Whole Foods" },
+  { "id": "t005", "date": "2025-08-04T19:10:00Z", "amount": -28.45,  "category": "Dining",     "merchant": "Chipotle" },
+  { "id": "t006", "date": "2025-08-05T08:00:00Z", "amount": -120.00, "category": "Utilities",  "merchant": "Electric Co" },
+  { "id": "t007", "date": "2025-08-06T09:15:00Z", "amount": -4.75,   "category": "Coffee",     "merchant": "Starbucks" },
+
+  { "id": "t008", "date": "2025-08-08T14:05:00Z", "amount": -52.30,  "category": "Transport",  "merchant": "Shell Gas" },
+  { "id": "t009", "date": "2025-08-09T13:20:00Z", "amount": -120.55, "category": "Shopping",   "merchant": "Target" },
+  { "id": "t010", "date": "2025-08-10T17:40:00Z", "amount": -63.40,  "category": "Groceries",  "merchant": "Trader Joe's" },
+  { "id": "t011", "date": "2025-08-12T20:10:00Z", "amount": -19.80,  "category": "Dining",     "merchant": "Shake Shack" },
+  { "id": "t012", "date": "2025-08-13T08:55:00Z", "amount": -4.15,   "category": "Coffee",     "merchant": "Blue Bottle" },
+
+  { "id": "t013", "date": "2025-08-15T09:00:00Z", "amount": 2500.00, "category": "Income",     "merchant": "Payroll" },
+  { "id": "t014", "date": "2025-08-15T12:00:00Z", "amount": -15.99,  "category": "Subscriptions","merchant": "Netflix" },
+
+  { "id": "t015", "date": "2025-08-16T18:15:00Z", "amount": -72.90,  "category": "Groceries",  "merchant": "Safeway" },
+  { "id": "t016", "date": "2025-08-17T09:30:00Z", "amount": -4.75,   "category": "Coffee",     "merchant": "Starbucks" },
+  { "id": "t017", "date": "2025-08-18T19:05:00Z", "amount": -28.45,  "category": "Dining",     "merchant": "Chipotle" },
+  { "id": "t018", "date": "2025-08-19T16:10:00Z", "amount": -62.10,  "category": "Groceries",  "merchant": "Trader Joe's" },
+  { "id": "t019", "date": "2025-08-20T22:10:00Z", "amount": -18.20,  "category": "Transport",  "merchant": "Uber" },
+  { "id": "t020", "date": "2025-08-21T15:00:00Z", "amount": -23.60,  "category": "Health",     "merchant": "CVS Pharmacy" }
+]

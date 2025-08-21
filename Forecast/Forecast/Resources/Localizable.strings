@@ -22,3 +22,5 @@
 "ally.current_balance" = "Your current balance";
 "a11y.transaction.debit" = "Debit Transaction";
 "a11y.transaction.credit" = "Credit Transaction";
+
+"section.forecast" = "Forecast";

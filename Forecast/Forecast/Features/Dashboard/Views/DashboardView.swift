@@ -9,55 +9,83 @@ import SwiftUI
 
 struct DashboardView: View {
     
-    @StateObject private var vm : DashboardViewModel
-    
-    init(viewModel: DashboardViewModel){
-        _vm = StateObject(wrappedValue: viewModel)
+    private enum DashboardTab: String, CaseIterable {
+        case overview = "Overview"
+        case charts   = "Charts"
     }
+
     
-    
-    var body: some View {
-        NavigationView{
-            Group{
-                if vm.isLoading{
-                    ProgressView(LocalizedStringKey("loading.generic"))
-                        .frame(maxWidth: .infinity , maxHeight : .infinity)
-                }
-                else if let error = vm.errorMessage{
-                    VStack(spacing: 12) {
-                        Text(error)
-                            .multilineTextAlignment(.center)
-                        
-                        Button(LocalizedStringKey("action.retry")){
-                            vm.load(forceRefresh: true)
+        
+        @StateObject private var vm: DashboardViewModel
+        @State private var selectedTab: DashboardTab = .overview
+        
+        init(viewModel: DashboardViewModel) {
+            _vm = StateObject(wrappedValue: viewModel)
+        }
+        
+        var body: some View {
+            NavigationView {
+                Group {
+                    if vm.isLoading {
+                        ProgressView(LocalizedStringKey("loading.generic"))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else if let error = vm.errorMessage {
+                        VStack(spacing: 12) {
+                            Text(error).multilineTextAlignment(.center)
+                            Button(LocalizedStringKey("action.retry")) { vm.load(forceRefresh: true) }
                         }
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity , maxHeight : .infinity)
-                }
-                else{
-                    ScrollView{
-                        VStack(spacing:16){
-                            balanceCard
-                            monthSummaryCard
-                            categorySummaryCard
-                            transactionsSection
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
+                        VStack(spacing: 12) {
+                            Picker("", selection: $selectedTab) {
+                                ForEach(DashboardTab.allCases, id: \.self) { tab in
+                                    Text(tab.rawValue).tag(tab)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .padding(.horizontal)
                             
+                            if selectedTab == .overview {
+                                overviewContent
+                            } else {
+                                chartsContent
+                            }
                         }
-                        .padding(.horizontal,16)
-                        .padding(.vertical,12)
-                        
+                        .refreshable { vm.load(forceRefresh: true) }
                     }
-                    .refreshable {
-                        vm.load(forceRefresh: true)
-                    }}
+                }
+                .navigationTitle(LocalizedStringKey("dashboard.title"))
             }
-            .navigationTitle(LocalizedStringKey("dashboard.title"))
+            .onAppear { vm.load() }
         }
-        .onAppear {
-            vm.load()
+        
+        
+        
+        private var overviewContent: some View {
+            ScrollView {
+                VStack(spacing: 16) {
+                    balanceCard
+                    monthSummaryCard
+                    categorySummaryCard
+                    transactionsSection
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            }
         }
-    }
+        
+        
+        
+        private var chartsContent: some View {
+            ScrollView {
+                VStack(spacing: 16) {
+                    forecastSection
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            }
+        }
     
     
     //            Sections
@@ -69,7 +97,7 @@ struct DashboardView: View {
                 .foregroundColor(.secondary)
             Text(currency(vm.currentBalance))
                 .font(.system(size: 28, weight: .semibold, design: .rounded))
-                .accessibilityLabel(LocalizedStringKey("ally.current_balance"))
+                .accessibilityLabel(LocalizedStringKey("a11y.current_balance"))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
@@ -176,6 +204,23 @@ struct DashboardView: View {
             )
         }
     }
+    private var forecastSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(LocalizedStringKey("section.forecast"))
+                .font(.headline)
+                .padding(.horizontal)
+
+            ForecastChart(points: vm.forecastPoints)
+                
+                
+                .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(Color(uiColor: .secondarySystemBackground))
+                    )
+        }
+    }
+
     
     private func currency(_ d : Decimal) -> String {
         let nf = NumberFormatter()
