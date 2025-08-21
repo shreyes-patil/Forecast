@@ -1,0 +1,24 @@
+//
+//  Localizable.strings
+//  Forecast
+//
+//  Created by Shreyas Patil on 8/21/25.
+//
+
+/*(en) */
+
+"loading.generic" = "Loading…";
+"action.retry" = "Retry";
+"action.see_all" = "See All";
+"dashboard.title" = "Dashboard";
+
+"summary.current_balance" = "Current Balance";
+"summary.income_month" = "This Month's Income";
+"summary.spending_month" = "This Month's Spending";
+"summary.top_categories" = "Top Categories";
+
+"section.recent_transactions" = "Recent Transactions";
+
+"ally.current_balance" = "Your current balance";
+"a11y.transaction.debit" = "Debit Transaction";
+"a11y.transaction.credit" = "Credit Transaction";

@@ -22,7 +22,7 @@ final class DashboardViewModel : ObservableObject {
     @Published var currentBalance : Decimal = 0
     @Published var monthIncome : Decimal = 0
     @Published var monthSpending : Decimal = 0
-    @Published var topCategories : [(String, total: Decimal)] = []
+    @Published var topCategories : [(category: String, total: Decimal)] = []
     
     init(accountRepo : AccountRepository, transactionRepo : TransactionRepository) {
         self.accountRepo = accountRepo

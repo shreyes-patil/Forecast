@@ -6,27 +6,23 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct ForecastApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // Dependencies (mocks for now)
+            let bank = MockBankAdapter()
+            let txStore = InMemoryTransactionStore()
+            let txRepo = TransactionRepositoryImpl(bank: bank, store: txStore)
+            let acctRepo = MockAccountRepository()
+
+            DashboardView(
+                viewModel: DashboardViewModel(
+                    accountRepo: acctRepo,
+                    transactionRepo: txRepo
+                )
+            )
         }
-        .modelContainer(sharedModelContainer)
     }
 }
