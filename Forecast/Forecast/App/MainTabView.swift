@@ -29,7 +29,7 @@ struct MainTabView: View {
             }
             
             NavigationStack{
-                Text("AIChat")
+                ChatView(viewModel: ChatViewModel(chat: chatAdapter, txRepo: transactionRepo))
                     .navigationTitle(Text("AIChat"))
             }
             .tabItem{
